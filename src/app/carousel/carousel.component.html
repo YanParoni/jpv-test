@@ -1,0 +1,26 @@
+<div >
+<div class="container">
+  <div class="carousel-container" *ngFor="let image of imagesList;let i = index">
+    <img 
+    *ngIf="i === currentImage"
+    [@carouselAnimation]
+    class="carousel-item" 
+    [src]="image.src" 
+    alt="Imagem do Carrossel" />
+  </div>
+  <button class="indicators">
+    <span
+      class="indicator-circle"
+      *ngFor="let image of imagesList; let i = index"
+      [class.active]="i === currentImage"
+      (click)="onIndicatorClick(i)"
+    ></span>
+  </button>
+  <button class="control prev" (click)="onPreviousClick()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()">
+    <span class="arrow right"></span>
+  </button>
+</div>
+</div>

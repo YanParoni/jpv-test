@@ -1,0 +1,22 @@
+<div class="gallery-container">
+  <div class="thumbnail-list">
+    <ng-container *ngFor="let image of imagesList; let i = index">
+      <div
+        class="thumbnail"
+        (click)="selectImage(i)"
+        *ngIf="i !== currentImage"
+        [class]="getThumbnailClass(i)"
+      >
+        <img style="width: 30rem" [src]="image.src" alt="Thumbnail" />
+      </div>
+    </ng-container>
+  </div>
+  <div class="selected-image-container" *ngIf="imagesList[currentImage]">
+    <img
+      class="selected-image"
+      [src]="imagesList[currentImage].src"
+      alt="Selected Image"
+      [class]="selectedImageClass"
+    />
+  </div>
+</div>
