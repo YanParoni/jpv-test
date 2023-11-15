@@ -15,6 +15,6 @@ jobs:
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          repoToken: '1//0hsyAl1I4rm5vCgYIARAAGBESNwF-L9Ir9v450Lz8NuonSSVCUc3X6x4166sz2tTDK-6PuXUjHDEU8HjIIs_ldUZ2wrXLtpwCp_k'
           firebaseServiceAccount: 'FIREBASE_SERVICE_ACCOUNT_JPV_TEST_6EBB8'
           projectId: jpv-test-6ebb8
