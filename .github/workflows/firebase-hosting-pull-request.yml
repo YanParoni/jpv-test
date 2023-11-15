@@ -2,19 +2,15 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on PR
-'on':
-  push:
-    branches:
-        - main
-        - master
+'on': pull_request
 jobs:
-  build_and_deploy:
+  build_and_preview:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci && npm run build
+      - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '1//0hsyAl1I4rm5vCgYIARAAGBESNwF-L9Ir9v450Lz8NuonSSVCUc3X6x4166sz2tTDK-6PuXUjHDEU8HjIIs_ldUZ2wrXLtpwCp_k'
-          firebaseServiceAccount: '1//0hsyAl1I4rm5vCgYIARAAGBESNwF-L9Ir9v450Lz8NuonSSVCUc3X6x4166sz2tTDK-6PuXUjHDEU8HjIIs_ldUZ2wrXLtpwCp_k'
+          FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
           projectId: jpv-test-6ebb8
